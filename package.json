@@ -1,18 +1,14 @@
 {
-  "name": "ssdpractice",
-  "version": "1.0.0",
-  "description": "Lab 7 sample Node.js app",
-  "main": "src/server.js",
-  "scripts": {
-    "start": "node src/server.js",
-    "test": "mocha tests/test.js"
-  },
+  "type": "module",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.21.2"
   },
   "devDependencies": {
-    "chai": "^4.3.10",
-    "mocha": "^10.4.0",
-    "selenium-webdriver": "^4.20.0"
+    "chai": "^5.1.2",
+    "mocha": "^11.0.1",
+    "selenium-webdriver": "^4.27.0"
+  },
+  "scripts": {
+    "test": "mocha tests/*.js"
   }
 }
