@@ -10,5 +10,6 @@
   },
   "scripts": {
     "test": "mocha tests/*.js"
+    "lint": "eslint ."
   }
 }
