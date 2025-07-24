@@ -1,0 +1,32 @@
+name: SonarQube Scan
+
+on: [push, pull_request]
+
+jobs:
+  sonar:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1‑‑ fetch your code
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2‑‑ SonarQube scanner needs Java
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      # 3‑‑ Run the scanner
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@v2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          projectBaseDir: "."
+
+      # (optional) surface a clickable link in the job summary
+      - name: Show dashboard link
+        run: echo "::notice title=SonarQube::${{ secrets.SONAR_HOST_URL }}/dashboard?id=${{ github.repository }}"
